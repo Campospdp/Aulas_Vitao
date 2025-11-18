@@ -4,10 +4,12 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import usuarioRoutes from "./routes/usuario.routes.js";
-import livrosRoutes from "./routes/livros.routes.js";
-import avaliacoesRoutes from "./routes/avaliacoes.routes.js";
 
+import usuariosRoutes from "./routes/usuarios.routes.js";
+import livrosRoutes from "./routes/livros.routes.js";
+import avaliacaoRoutes from "./routes/avaliacoes.routes.js"
+import favoritosRoutes from "./routes/favoritos.routes.js"
+import reservasRoutes from "./routes/reservas.routes.js"
 // ============================
 //  Configuração do servidor
 // ============================
@@ -15,15 +17,15 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  res.send("🚀 API rodando com sucesso!");
-});
+app.get("/", (req,res) =>{
+    res.send("API funcionando");
+})
 
-app.use("/usuario", usuarioRoutes);
-app.use("/livros", livrosRoutes);
-app.use("/avaliacoes", avaliacoesRoutes);
-
-
+app.use("/usuarios",usuariosRoutes);
+app.use("/livros",livrosRoutes);
+app.use("/avaliacoes", avaliacaoRoutes);
+app.use("/favoritos", favoritosRoutes);
+app.use("/reservas", reservasRoutes);
 
 // ============================
 //  Inicia o servidor
